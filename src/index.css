@@ -1,0 +1,323 @@
+:root {
+  /* main colour */
+  --blue: #778bd0;
+  --yellow: #e2d76b;
+  --green: #95bf78;
+  --forest: #4e6a3d;
+  --brown: #5f4f38;
+
+  --bg: #f8f8f2;
+  --surface: #ffffff;
+  --border: #e6e4d8;
+  --muted: #8a7d6a;
+
+  --blue-soft: #e8ecf8;
+  --yellow-soft: #f8f4d6;
+  --green-soft: #e8f1e1;
+  --brown-soft: #efebe4;
+
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(95, 79, 56, 0.06), 0 4px 12px rgba(95, 79, 56, 0.04);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--brown);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 960px; /* 从 760 加宽，6 列的表格才不会太挤 */
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+/* title */
+h1 {
+  margin: 0 0 28px;
+  font-size: 32px;
+  color: var(--forest);
+  letter-spacing: -0.5px;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: var(--yellow);
+}
+
+h2 {
+  margin: 36px 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* form */
+.app-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.app-form input,
+.app-form select {
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--brown);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.app-form input::placeholder { color: var(--muted); }
+
+.app-form input:focus,
+.app-form select:focus {
+  outline: none;
+  background: var(--surface);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.app-form button {
+  padding: 10px 16px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--forest);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.app-form button:hover { background: var(--brown); }
+
+.app-form button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+
+/* filter bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-btn:hover {
+  color: var(--forest);
+  background: var(--green-soft);
+}
+
+.filter-btn.active {
+  color: #fff;
+  background: var(--forest);
+  border-color: var(--forest);
+}
+
+.filter-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+
+/* empty state */
+.empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+/* table */
+.table-wrap {
+  overflow-x: auto; 
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.app-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.app-table th,
+.app-table td {
+  padding: 12px 16px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.app-table th {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--forest);
+  background: var(--green-soft);
+}
+
+.app-table tbody tr {
+  border-top: 1px solid var(--border);
+}
+
+.app-table tbody tr:hover {
+  background: var(--bg);
+}
+
+/* status badges */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.badge-applied      { background: var(--blue-soft);   color: #4a5c9e; }
+.badge-interviewing { background: var(--yellow-soft); color: var(--brown); }
+.badge-offer        { background: var(--green-soft);  color: var(--forest); }
+.badge-rejected     { background: var(--brown-soft);  color: var(--muted); }
+
+/* delete button */
+.btn-delete {
+  padding: 4px 12px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background: var(--brown-soft);
+  color: var(--brown);
+}
+
+select.badge {
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+select.badge:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.search-input {
+  flex: 1 1 220px;
+  max-width: 280px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--brown);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.search-input::placeholder { color: var(--muted); }
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 8px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.chart-card {
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.chart-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  color: var(--forest);
+}
